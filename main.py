@@ -1,3 +1,6 @@
+import time
+import webbrowser
+
 def pigpen_encryptor(text):
 	pigpen_chars = ['ᒧ', '⊔', 'ᒪ', '⊐', '□', '⊏', 'ᒣ', '⊓', 'ᒥ', 'ᒧx', '⊔x', 'ᒪx', '⊐x', '□x', '⊏x', 'ᒣx', '⊓x', 'ᒥx', 'ᒧo', '⊔o', 'ᒪo', '⊐o', '□o', '⊏o', 'ᒣo', '⊓o']
 	pigpen_dict = {}
@@ -18,8 +21,7 @@ def pigpen_encryptor(text):
 
 
 def pigpen_decryptor( text ):
-	pigpen_chars = [ 'ᒧ' , '⊔' , 'ᒪ' , '⊐' , '□' , '⊏' , 'ᒣ' , '⊓' , 'ᒥ' , 'ᒧx' , '⊔x' , 'ᒪx' , '⊐x' , '□x' , '⊏x' ,
-					 'ᒣx' , '⊓x' , 'ᒥx' , 'ᒧo' , '⊔o' , 'ᒪo' , '⊐o' , '□o' , '⊏o' , 'ᒣo' , '⊓o' ]
+	pigpen_chars = ['ᒧ', '⊔', 'ᒪ', '⊐', '□', '⊏', 'ᒣ', '⊓', 'ᒥ', 'ᒧx', '⊔x', 'ᒪx', '⊐x', '□x', '⊏x', 'ᒣx', '⊓x', 'ᒥx', 'ᒧo', '⊔o', 'ᒪo', '⊐o', '□o', '⊏o', 'ᒣo', '⊓o']
 	pigpen_dict = { }
 	reverse_pigpen_dict = { }
 	alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -28,12 +30,21 @@ def pigpen_decryptor( text ):
 		reverse_pigpen_dict [ alphabet [ i ] ] = pigpen_chars [ i ]
 
 	decrypt = ''
+	i = 0
 	for z in text :
-		if z in alphabet :
+		if i < len(text)-1:
+			i = i + 1
+		if z =='o' or z =='x':
+			continue
+		elif z in pigpen_chars :
+			if text[i]=='o' or text[i]=='x':
+				z = z + text[i]
 			decrypt = decrypt + pigpen_dict [ z ]
 		else :
 			decrypt = decrypt + z
+
 	return (decrypt)
+
 
 def caesar_encryptor(text,number):
 	number = number % 26
@@ -88,6 +99,10 @@ def caesar_decryptor(text,number):
 
 user_method = input("Please select your cypher type (1- Caesar cipher , 2 – Pig Pen:   ")
 operation = input("Enter you operation ( 1-encrypt , 2-decrypt):   ")
+#if user_method.lower() == "Pig Pen" or user_method.lower() == "2":
+#	print("If need pigpen characters see this link")
+#	time.sleep(5)
+#	webbrowser.open('https://www.programmersought.com/article/57652656603/')
 user_text = input("enter your message:   ")
 
 
