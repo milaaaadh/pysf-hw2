@@ -1,5 +1,4 @@
 import time
-import webbrowser
 
 def pigpen_encryptor(text):
 	pigpen_chars = ['ᒧ', '⊔', 'ᒪ', '⊐', '□', '⊏', 'ᒣ', '⊓', 'ᒥ', 'ᒧx', '⊔x', 'ᒪx', '⊐x', '□x', '⊏x', 'ᒣx', '⊓x', 'ᒥx', 'ᒧo', '⊔o', 'ᒪo', '⊐o', '□o', '⊏o', 'ᒣo', '⊓o']
